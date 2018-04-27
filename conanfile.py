@@ -23,11 +23,14 @@ class MSMPIConan(ConanFile):
     def package(self):
         self.copy(pattern="*", dst="license", src=os.path.join("microsoft_mpi", "License"))
         self.copy(pattern="*", dst="include", src=os.path.join("microsoft_mpi", "Include"), keep_path=True)
-        self.copy(pattern="*", dst="bin", src=os.path.join("microsoft_mpi", "Bin"), keep_path=False)
+        self.copy(pattern="*.exe", dst="bin", src=os.path.join("microsoft_mpi", "Bin"), keep_path=False)
+        self.copy(pattern="*.man", dst="bin", src=os.path.join("microsoft_mpi", "Bin"), keep_path=False)
         if self.settings.arch == "x86":
-            self.copy(pattern="*.lib", dst="lib", src=os.path.join("microsoft_mpi", "Lib", "x86"), keep_path=False)
+            self.copy(pattern="*.dll", dst="bin", src=os.path.join("microsoft_mpi", "Bin", "X86"), keep_path=False)
+            self.copy(pattern="*", dst="lib", src=os.path.join("microsoft_mpi", "Lib", "x86"), keep_path=False)
         elif self.settings.arch == "x86_64":
-            self.copy(pattern="*.lib", dst="lib", src=os.path.join("microsoft_mpi", "Lib", "x64"), keep_path=False)
+            self.copy(pattern="*.dll", dst="bin", src=os.path.join("microsoft_mpi", "Bin", "x64"), keep_path=False)
+            self.copy(pattern="*", dst="lib", src=os.path.join("microsoft_mpi", "Lib", "x64"), keep_path=False)
 
     def package_info(self):
         self.env_info.MPI_HOME = self.package_folder
