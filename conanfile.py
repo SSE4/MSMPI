@@ -14,13 +14,7 @@ class MSMPIConan(ConanFile):
     homepage = "https://msdn.microsoft.com/en-us/library/bb524831%28v=vs.85%29.aspx"
     license = "Microsoft"
     exports = ["LICENSE.md"]
-
-    # Options may need to change depending on the packaged library.
     settings = {"os": ["Windows"], "arch": ["x86", "x86_64"]}
-
-    # Custom attributes for Bincrafters recipe conventions
-    source_subfolder = "source_subfolder"
-    build_subfolder = "build_subfolder"
 
     def source(self):
         url = 'https://github.com/SSE4/microsoft_mpi.git'
