@@ -10,7 +10,6 @@ class MSMPIConan(ConanFile):
           "developing and running parallel applications on the Windows platform"
     homepage = "https://msdn.microsoft.com/en-us/library/bb524831%28v=vs.85%29.aspx"
     license = "Microsoft"
-    exports = ["LICENSE.md"]
     settings = {"os": ["Windows"], "arch": ["x86", "x86_64"]}
 
     def source(self):
